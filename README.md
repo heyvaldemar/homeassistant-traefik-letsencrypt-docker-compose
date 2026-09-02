@@ -82,6 +82,25 @@ This is deliberately a host-side script and not a container in the stack: an in-
 
 Every service carries memory and CPU limits plus reservations as compose-level defaults — the same values CI boots the stack under. Override any of them in `.env` (the knobs and their defaults are listed in `.env.example`, e.g. `TRAEFIK_MEMORY_LIMIT=512m`) and the override survives every `git pull`. If a service is OOM-killed under real load, `docker inspect <container> --format '{{.State.OOMKilled}}'` says so; raise its `_MEMORY_LIMIT` and recreate.
 
+## Backups
+
+The `backups` container runs on a loop: an initial delay (`HOMEASSISTANT_BACKUP_INIT_SLEEP`, default 30m), then every `HOMEASSISTANT_BACKUP_INTERVAL` (default 24h) it takes a consistent copy of each SQLite database (`home-assistant_v2.db`) through Python's `sqlite3` backup API - no application stop - and a `tar.gz` of the rest of the data directory (live database files excluded), into the `homeassistant-backups` volume; files older than `HOMEASSISTANT_BACKUP_PRUNE_DAYS` (default 7) are pruned. Each artefact logs `... backup OK: <file> (<bytes> bytes)` or `FAILED` (kept as `<file>.failed`) — grep the log for `FAILED` from your monitoring.
+
+**Verify backups are running:**
+
+```bash
+docker compose -p homeassistant logs backups | tail -5
+docker compose -p homeassistant exec backups ls -la /srv/homeassistant/backups/
+```
+
+**Restore** a backup set with the interactive script (`chmod +x homeassistant-restore-data.sh` once): it stops homeassistant, unpacks the data archive over the data directory, restores each database from its consistent copy, and starts homeassistant again.
+
+```bash
+./homeassistant-restore-data.sh
+```
+
+**Off-host replication.** Backups live in a named volume on the same host — bind-mount `HOMEASSISTANT_BACKUPS_PATH` to a directory covered by your off-host backup solution (restic, rclone, Borg, S3 sync).
+
 ## Testing
 
 The [Deployment Verification](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml?query=branch%3Amain) workflow runs on every push, pull request, and every Monday at 06:00 UTC: actionlint, Trivy scans of both pinned images, the weekly freshness check, and a deploy-and-test job that boots the stack and requires the HA UI to answer through Traefik.
