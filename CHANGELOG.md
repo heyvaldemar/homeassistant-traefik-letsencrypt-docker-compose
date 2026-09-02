@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 _(no unreleased changes yet)_
 
+## [1.3.1] - 2026-09-02
+
+### Fixed
+
+- A database file that does not exist yet (the application creates it on
+  first start) is skipped with a note instead of being reported as a
+  failed backup; the first cycle after a fresh install no longer logs
+  `FAILED`.
+
 ## [1.3.0] - 2026-09-02
 
 ### Added
@@ -73,7 +82,8 @@ v1.2.0.
 - `.env.example`; `.env` untracked and gitignored (it held no secrets in
   this template, but the fleet convention applies).
 
-[Unreleased]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.0.0...v1.1.0
