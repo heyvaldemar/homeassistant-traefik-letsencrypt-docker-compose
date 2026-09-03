@@ -26,7 +26,7 @@ _(no unreleased changes yet)_
 
 ### Added
 
-- **`tests/e2e-backup-restore.sh`** — scenarios against the live stack,
+- **`tests/e2e-backup-restore.sh`**: scenarios against the live stack,
   run by CI on every push: the required-variable guard fires, a backup
   set is produced, the archive is readable, the database copy passes `PRAGMA integrity_check`, a cycle that cannot
   write its archive is reported as `FAILED`, **restore genuinely
@@ -46,7 +46,7 @@ _(no unreleased changes yet)_
 ### Added
 
 - **A `backups` service** for the configuration directory (integrations, automations, secrets) and the recorder database: on a loop it takes a consistent copy of each SQLite database (`home-assistant_v2.db`) through Python's `sqlite3` backup API - no application stop - and a `tar.gz` of the rest of the data directory (live database files excluded), logs `OK` or `FAILED` per artefact (a failed archive is kept as `.failed`), and prunes only its own files. Schedule knobs (`HOMEASSISTANT_BACKUP_INIT_SLEEP`, `HOMEASSISTANT_BACKUP_INTERVAL`, `HOMEASSISTANT_BACKUP_PRUNE_DAYS`, path and names) have defaults listed in `.env.example`.
-- **`homeassistant-restore-data.sh`** — interactive restore of a backup set: stops homeassistant, unpacks the data archive, restores each database copy, starts homeassistant.
+- **`homeassistant-restore-data.sh`**: interactive restore of a backup set: stops homeassistant, unpacks the data archive, restores each database copy, starts homeassistant.
 - CI waits for the first backup cycle and proves the archives are readable and the database copy passes `PRAGMA integrity_check`.
 
 ## [1.2.0] - 2026-09-02
@@ -66,7 +66,7 @@ _(no unreleased changes yet)_
 
 ### Added
 
-- **`update.sh`** — unattended updates to the newest tagged release,
+- **`update.sh`**: unattended updates to the newest tagged release,
   and nothing else: a tag is cut only after CI has booted the pinned
   images and passed the smoke tests, so "update to the latest tag" means
   "update to a combination a machine has already run". It refuses to
@@ -83,8 +83,8 @@ v1.2.0.
 ### Fixed
 
 - **Home Assistant state was ephemeral**: only `configuration.yaml` was
-  mounted, so `/config` — the HA database, users, automations, dashboards,
-  and integrations — lived inside the container and was wiped on every
+  mounted, so `/config`: the HA database, users, automations, dashboards,
+  and integrations, lived inside the container and was wiped on every
   recreate or image update. `/config` is now a named volume
   (`homeassistant-data`); the tracked `configuration.yaml` stays
   bind-mounted over it for the reverse-proxy settings.
