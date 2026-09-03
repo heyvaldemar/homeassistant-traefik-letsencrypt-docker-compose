@@ -49,7 +49,7 @@ Container HA behind a reverse proxy is great for dashboards and network-based in
 
 Two images — [`traefik`](https://hub.docker.com/_/traefik) and [`homeassistant/home-assistant`](https://hub.docker.com/r/homeassistant/home-assistant) — pinned to `tag@sha256:<digest>` as interpolation defaults in the compose `x-images` block. `git pull` alone delivers the tested combination; an `*_IMAGE_TAG` variable in `.env` overrides deliberately.
 
-The weekly `check-pin-freshness` CI job re-resolves each pin against its registry and compares the pinned versions against the latest upstream releases. GitHub Actions are pinned by commit SHA; Dependabot keeps those fresh.
+The daily `check-pin-freshness` CI job re-resolves each pin against its registry and compares the pinned versions against the latest upstream releases. GitHub Actions are pinned by commit SHA; Dependabot keeps those fresh.
 
 ## Production checklist
 
@@ -103,7 +103,7 @@ docker compose -p homeassistant exec backups ls -la /srv/homeassistant/backups/
 
 ## Testing
 
-The [Deployment Verification](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml?query=branch%3Amain) workflow runs on every push, pull request, and every Monday at 06:00 UTC: actionlint, Trivy scans of both pinned images, the weekly freshness check, and a deploy-and-test job that boots the stack and requires the HA UI to answer through Traefik.
+The [Deployment Verification](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml?query=branch%3Amain) workflow runs on every push, pull request, and every day at 06:00 UTC: actionlint, Trivy scans of both pinned images, the weekly freshness check, and a deploy-and-test job that boots the stack and requires the HA UI to answer through Traefik.
 
 ## Security Notes
 
