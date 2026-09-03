@@ -3,7 +3,7 @@
 [![Deployment Verification](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml/badge.svg?branch=main)](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository deploys **Home Assistant** (container edition) behind **Traefik** with automatic **Let's Encrypt TLS**. The bundled `configuration.yaml` pre-configures the reverse-proxy trust settings HA needs to work behind Traefik, and `/config` persists in a named volume.
+This repository deploys Home Assistant (container edition) behind Traefik with automatic Let's Encrypt TLS. The bundled `configuration.yaml` pre-configures the reverse-proxy trust settings HA needs to work behind Traefik, and `/config` persists in a named volume.
 
 📙 Full narrative installation guide on the blog: [heyvaldemar.com/install-home-assistant-using-docker-compose/](https://www.heyvaldemar.com/install-home-assistant-using-docker-compose/).
 
@@ -120,7 +120,7 @@ chmod +x tests/e2e-backup-restore.sh
 ./tests/e2e-backup-restore.sh
 ```
 
-## Security Notes
+## Security notes
 
 - The bundled `configuration.yaml` enables `ip_ban_enabled` with a 5-attempt threshold and trusts the Docker network ranges as proxies, required for correct client IPs behind Traefik.
 - Exposing HA to the internet is a real decision: it controls your home. Consider IP-allowlisting at your firewall or a VPN if you don't need public access.
