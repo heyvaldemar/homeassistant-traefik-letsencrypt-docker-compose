@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-_(no unreleased changes yet)_
+### Changed
+
+- **`homeassistant/home-assistant:2026.9.2` moved to `homeassistant/home-assistant:2026.9.3`.** The freshness check reported the lag; the deploy job booted the stack on the new image before this landed.
 
 ## [1.6.3] - 2026-09-18
 
