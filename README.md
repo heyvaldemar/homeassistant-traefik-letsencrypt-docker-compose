@@ -1,6 +1,7 @@
 # Home Assistant + Traefik + Let's Encrypt on Docker Compose
 
 [![Deployment Verification](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml/badge.svg?branch=main)](https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/actions/workflows/deployment-verification.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/14856/badge)](https://www.bestpractices.dev/projects/14856)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository deploys Home Assistant (container edition) behind Traefik with automatic Let's Encrypt TLS. The bundled `configuration.yaml` pre-configures the reverse-proxy trust settings HA needs to work behind Traefik, and `/config` persists in a named volume.
