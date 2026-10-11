@@ -7,7 +7,7 @@
 # the pins from these lines — this block is the single source of truth.
 x-images:
   traefik: &traefik-image ${TRAEFIK_IMAGE_TAG:-traefik:${TRAEFIK_IMAGE_VERSION:-3.7@sha256:575fa15b135078fe5e50aa847987d96dbddd7b093c172429618404df73f3fa7c}}
-  homeassistant: &homeassistant-image ${HOMEASSISTANT_IMAGE_TAG:-homeassistant/home-assistant:${HOMEASSISTANT_IMAGE_VERSION:-2026.10.0@sha256:1b64d38f38d922bf9d59336451fd6453e1d614f934456af4ee3d2a51061be3a4}}
+  homeassistant: &homeassistant-image ${HOMEASSISTANT_IMAGE_TAG:-homeassistant/home-assistant:${HOMEASSISTANT_IMAGE_VERSION:-2026.10.1@sha256:130241f28d01fa80dfa3b44f7d89781c188d8642ecab9024f079f19f9f82baa0}}
 
 networks:
   homeassistant-network:
