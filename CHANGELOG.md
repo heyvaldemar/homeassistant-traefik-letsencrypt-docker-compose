@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-_(no unreleased changes yet)_
+### Fixed
+
+- **`.env.example` names the versions the compose file pins**: `HOMEASSISTANT_IMAGE_VERSION` from 2026.8.3 to 2026.10.1. The commented-out examples had fallen behind the pins, so uncommenting one would have downgraded the service. The fleet's conformance check reported it.
 
 ## [1.7.5] - 2026-10-11
 
