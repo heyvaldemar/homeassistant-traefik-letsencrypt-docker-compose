@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- **`traefik:3.7` was rebuilt upstream**; the pin moved from `sha256:575fa15b1350…` to `sha256:0f6150202bc1…`. Same version, same tag, a rebuilt base image — the usual shape of a security fix in a base layer.
+
 ### Fixed
 
 - **`.env.example` names the versions the compose file pins**: `HOMEASSISTANT_IMAGE_VERSION` from 2026.8.3 to 2026.10.1. The commented-out examples had fallen behind the pins, so uncommenting one would have downgraded the service. The fleet's conformance check reported it.
