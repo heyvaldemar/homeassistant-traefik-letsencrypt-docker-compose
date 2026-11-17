@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+_(no unreleased changes yet)_
+
+## [1.7.23] - 2026-11-17
+
 ### Changed
 
 - **`homeassistant/home-assistant:2026.11.1` moved to `homeassistant/home-assistant:2026.11.2`.** The freshness check reported the lag; the deploy job booted the stack on the new image before this landed.
@@ -346,7 +350,8 @@ v1.2.0.
 - `.env.example`; `.env` untracked and gitignored (it held no secrets in
   this template, but the fleet convention applies).
 
-[Unreleased]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.22...HEAD
+[Unreleased]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.23...HEAD
+[1.7.23]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.22...v1.7.23
 [1.7.22]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.21...v1.7.22
 [1.7.21]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.20...v1.7.21
 [1.7.20]: https://github.com/heyvaldemar/homeassistant-traefik-letsencrypt-docker-compose/compare/v1.7.19...v1.7.20
