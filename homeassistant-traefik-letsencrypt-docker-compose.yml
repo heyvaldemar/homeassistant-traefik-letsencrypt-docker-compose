@@ -6,8 +6,8 @@
 # CI (Trivy scans, check-pin-freshness, the ephemeral test .env) reads
 # the pins from these lines — this block is the single source of truth.
 x-images:
-  traefik: &traefik-image ${TRAEFIK_IMAGE_TAG:-traefik:${TRAEFIK_IMAGE_VERSION:-3.7@sha256:b7b1b31e6440de0b1f7c4e0f6cf0a0f3f004866761d30c025fe00c80daaf7d9c}}
-  homeassistant: &homeassistant-image ${HOMEASSISTANT_IMAGE_TAG:-homeassistant/home-assistant:${HOMEASSISTANT_IMAGE_VERSION:-2026.11.2@sha256:493a07e8f6530fc640223f4a0a5248f20a61ca2f718bb1d31efbf08a2c5ea28f}}
+  traefik: &traefik-image ${TRAEFIK_IMAGE_TAG:-traefik:${TRAEFIK_IMAGE_VERSION:-3.7@sha256:649c6476d4c499de84572bc60f5ecf75e98e75a5b8f8a8a72010c836d8ee9f95}}
+  homeassistant: &homeassistant-image ${HOMEASSISTANT_IMAGE_TAG:-homeassistant/home-assistant:${HOMEASSISTANT_IMAGE_VERSION:-2026.11.3@sha256:24e541ddae5818bf8eb27898b9ba00d0c344a655aa5097e9e9bd4b19356be847}}
 
 networks:
   homeassistant-network:
